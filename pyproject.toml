@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docstracker-framework"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx",
+    "beautifulsoup4",
+    "pyyaml",
+    "markdownify",
+    "mcp<2",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+docstracker = "docstracker_framework.cli:main"
+docstracker-mcp = "docstracker_framework.mcp_server:main"
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that call external services",
+]
